@@ -1,0 +1,43 @@
+{
+  "name": "central-services",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "author": "Lars Levie <lars@beamform.io>",
+  "license": "ISC",
+  "env": {
+    "node": true
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "cogs": "4",
+    "cogs-transformer-babel": "^3.0.0",
+    "cogs-transformer-eslint": "^3.1.0",
+    "cogs-transformer-replace": "^3.0.0",
+    "cogs-transformer-underscore-template": "^1.1.0",
+    "eslint": "^4.19.1",
+    "eslint-config-coderiety": "^1.0.0",
+    "eslint-plugin-react": "^7.6.1",
+    "watchy": "^0.9.3"
+  },
+  "scripts": {
+    "watch": "./bin/watch-build.sh",
+    "build": "./bin/build.sh"
+  },
+  "dependencies": {
+    "koa": "^2.5.0",
+    "koa-body": "^2.5.0",
+    "koa-json": "^2.0.2",
+    "koa-logger": "^3.2.0",
+    "koa-router": "^7.4.0",
+    "pg": "^7.4.1",
+    "reflect-metadata": "^0.1.12",
+    "typeorm": "^0.1.20",
+    "underscore": "^1.8.3",
+    "underscore.string": "^3.3.4"
+  }
+}

@@ -1,0 +1,56 @@
+version: "3"
+
+volumes:
+  postgres:
+
+services:
+  app:
+    build: .
+    depends_on:
+      - consul
+      - consul-lb
+    ports:
+      - 80
+    volumes:
+      - ./.eslintrc:/code/.eslintrc
+      - ./bin:/code/bin
+      - ./etc:/code/etc
+      - ./package.json:/code/package.json
+      - ./src:/code/src
+      - ./dist:/code/dist
+    environment:
+      WATCH: 1
+      CONSUL_URL: 'consul:8500'
+      SYNC_DB: '1'
+  consul-lb:
+    image: coderiety/consul-lb:master
+    environment:
+      USE_SSL: '0'
+    ports:
+      - 80:80
+    depends_on:
+      - consul
+  consul:
+    image: consul:1.0.7
+    hostname: consul
+    command:
+      - agent
+      - -server
+      - -client=0.0.0.0
+      - -bootstrap-expect=1
+      - -retry-join=consul
+      - -ui
+    ports:
+      - 8500:8500
+      - 8300
+      - 8301
+      - 8302
+      - 8600
+  db:
+    image: postgres:10.3-alpine
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: central_services
+    ports:
+      - 5432:5432

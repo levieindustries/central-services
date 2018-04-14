@@ -1,0 +1,17 @@
+{
+  "extends": "eslint-config-coderiety",
+  "env": {
+    "node": true,
+    "browser": true
+  },
+  "rules": {
+    "sort-imports": [
+      "error",
+      {
+        "ignoreCase": true,
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": ["none", "all", "single", "multiple"]
+      }
+    ]
+  }
+}
