@@ -1,8 +1,5 @@
-import List from './modules/lists/models/list';
-import ListItem from './modules/lists/models/list-item';
-
-import ListItemSchema from './modules/lists/schemas/list-item';
-import ListSchema from './modules/lists/schemas/list';
+import List from './modules/lists/entities/list';
+import ListItem from './modules/lists/entities/list-item';
 
 module.exports = {
   database: {
@@ -12,7 +9,6 @@ module.exports = {
     username: 'postgres',
     database: 'central_services',
     synchronize: true,
-    entitySchemas: [ListSchema, ListItemSchema],
     entities: [List, ListItem]
   }
 };

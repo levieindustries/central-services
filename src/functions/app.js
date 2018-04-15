@@ -1,9 +1,9 @@
 import 'reflect-metadata';
-import body from 'koa-body';
 import {createConnection} from 'typeorm';
 import {database} from '../config';
 import json from 'koa-json';
 import Koa from 'koa';
+import koaBody from 'koa-body';
 import logger from 'koa-logger';
 import Router from 'koa-router';
 
@@ -21,12 +21,13 @@ createConnection(database)
   .then(async () => {
     app.use(responseTime);
     app.use(logger());
-    app.use(body());
+    // app.use(koaBody());
     app.use(json({pretty: false, param: 'pretty'}));
 
     router
       .get('/', ctx => (ctx.body = 'Welcome to Central Services!'))
       .get('/lists', require('../modules/lists/handlers/index'))
+      .post('/lists', koaBody(), require('../modules/lists/handlers/create'))
       .get('/health', ctx => (ctx.status = 204));
 
     app.use(router.routes());

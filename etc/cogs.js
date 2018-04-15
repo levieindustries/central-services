@@ -25,7 +25,7 @@ const FULL = {
       name: 'babel',
       only: ['src/**/*.+(js|scss)', '**/*.+(css|json)'],
       options: {
-        plugins: ['transform-runtime'],
+        plugins: ['transform-runtime', 'transform-decorators-legacy'],
         presets: ['env', 'stage-0']
       }
     }

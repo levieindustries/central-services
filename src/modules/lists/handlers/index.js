@@ -1,6 +1,3 @@
-import {getRepository} from 'typeorm';
-import List from '../models/list';
+import getLists from '../functions/get-lists';
 
-const listRepository = getRepository(List);
-
-module.exports = ctx => (ctx.body = listRepository.find());
+module.exports = async ctx => (ctx.body = await getLists());

@@ -1,10 +1,21 @@
 {
+  "parser": "babel-eslint",
+  "plugins": ["babel"],
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "experimentalDecorators": true
+    }
+  },
   "extends": "eslint-config-coderiety",
   "env": {
     "node": true,
     "browser": true
   },
   "rules": {
+    "no-unused-vars": 0,
     "sort-imports": [
       "error",
       {
