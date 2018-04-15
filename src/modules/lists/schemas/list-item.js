@@ -1,16 +1,16 @@
-import List from '../models/list';
+import ListItem from '../models/list-item';
 
 export default {
-  target: List,
+  target: ListItem,
   columns: {
     id: {
       primary: true,
       type: 'int',
       generated: true
     },
-    name: {
-      type: 'varchar',
-      length: 255
+    listId: {
+      foreign: true,
+      type: 'int'
     },
     deletedAt: {
       type: 'timestamp'
@@ -23,9 +23,9 @@ export default {
     }
   },
   relations: {
-    listItems: {
-      target: 'ListItem',
-      type: 'one-to-many'
+    list: {
+      target: 'List',
+      type: 'many-to-one'
     }
   }
 };
