@@ -1,5 +1,5 @@
 import List from './modules/lists/models/list';
-import ListSchema from './modules/lists/entities/list';
+import ListSchema from './modules/lists/schemas/list';
 
 module.exports = {
   database: {

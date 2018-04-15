@@ -1,4 +1,4 @@
-import {List} from '../models/list';
+import List from '../models/list';
 
 export default {
   target: List,

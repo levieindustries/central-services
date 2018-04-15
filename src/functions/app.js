@@ -10,8 +10,16 @@ import Router from 'koa-router';
 const router = new Router();
 const app = new Koa();
 
+const responseTime = async (ctx, next) => {
+  const start = Date.now();
+  await next();
+  const ms = Date.now() - start;
+  ctx.set('X-Response-Time', `${ms}ms`);
+};
+
 createConnection(database)
   .then(async () => {
+    app.use(responseTime);
     app.use(logger());
     app.use(body());
     app.use(json({pretty: false, param: 'pretty'}));
